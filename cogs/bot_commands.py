@@ -5,7 +5,7 @@ from config import settings
 
 class Check():
     def in_whitelist(self, ctx):
-        if ctx.author.id in settings["whitelist"]:
+        if ctx.author in settings["whitelist"]:
             return True
         else:
             print(f"[yellow]{ctx.author} tried to use a command, but haven't permissions to use it! Command: {ctx.message.content}")
