@@ -5,7 +5,7 @@ from config import settings
 
 class Check():
     def in_whitelist(self, ctx):
-        if ctx.author in settings["whitelist"]:
+        if str(ctx.author) in settings["whitelist"]:
             return True
         else:
             print(f"[yellow]{ctx.author} tried to use a command, but haven't permissions to use it! Command: {ctx.message.content}")
@@ -33,7 +33,7 @@ class Commands(commands.Cog):
         "Banning all members."
         await ctx.message.delete()
         for member in ctx.guild.members:
-            if str(member) in settings["whitelist"] or str(member) == settings["bot_user_id"]:
+            if str(member) in settings["whitelist"] or str(member) == settings["bot_user"]:
                 continue
             else:
                 print(f"[green]Banning {member}")

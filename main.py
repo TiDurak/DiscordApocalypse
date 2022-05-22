@@ -28,8 +28,10 @@ async def on_command_error(ctx, error):
         print(f"[yellow]{ctx.author} tried to use undefined command ({content})!")
     elif isinstance(error, commands.CommandInvokeError):
         print(f"[red]Bot doesn't have permissions to execute a command :(")
+    elif isinstance(error, commands.CheckFailure):
+        print(f"[yellow]{ctx.author} is not in whitelist!")
     else:
-        pass
+        raise error
 
 @bot.event
 async def on_ready():
@@ -46,7 +48,7 @@ async def on_ready():
     table.add_row(f"{pref}ban_all",      "Banning all members.")
     table.add_row(f"{pref}delete_all",   "Deletes all channels on the server.")
     table.add_row(f"{pref}spam_channel", "Creates a lot of the channels. Args: name_of_the_channels, count")
-    table.add_row(f"{pref}spam",         "Spamming in all channels. Args: message_text")
+    table.add_row(f"{pref}spam",         "Spamming in all channels. Args: count, message_text")
 
     console = Console()
     console.print(table)
