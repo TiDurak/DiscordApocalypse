@@ -1,3 +1,5 @@
+import os
+
 settings = {
     'token': os.environ['APOCALYPSE_TOKEN'], # Bot token
     'bot_user_id': 0,                        # Bot user id
