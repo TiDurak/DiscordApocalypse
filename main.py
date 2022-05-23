@@ -14,8 +14,6 @@ from config import settings
 
 print(f"[b yellow]Python {sys.version}")
 
-intents = discord.Intents(messages=True, guilds=True)
-
 bot = commands.Bot(command_prefix = settings['prefix'], intents=discord.Intents.all())
 bot.remove_command('help')
 
