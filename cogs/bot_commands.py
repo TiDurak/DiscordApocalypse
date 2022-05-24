@@ -42,6 +42,15 @@ class Commands(commands.Cog):
                 except:
                     print(f"[yellow]I'm haven't permissions to ban {member}")
 
+    @commands.command(aliases=['create_role', 'srole', 'crole', 'spamrole', 'spam_role'])
+    @commands.check(check.in_whitelist)
+    async def spam_roles(self, ctx, count, *, name):
+        for i in range(1, int(count)+1):
+            "Creates a lot of roles. Args: count, name_of_the_roles"
+            await ctx.guild.create_role(name=name)
+            print(f"[green]Created {i} role.")
+        print("[b green]Done!")
+
 
     @commands.command(aliases=['del_all', 'delall', 'delch', 'del_ch'])
     @commands.check(check.in_whitelist)

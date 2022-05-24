@@ -42,11 +42,12 @@ async def on_ready():
     table.add_column("Command", justify="left", style="cyan", no_wrap=True)
     table.add_column("Description", justify="right", style="green")
 
-    table.add_row(f"{pref}ban",          "Banning members. Arguments: @member, reason")
-    table.add_row(f"{pref}ban_all",      "Banning all members.")
-    table.add_row(f"{pref}delete_all",   "Deletes all channels on the server.")
-    table.add_row(f"{pref}spam_channel", "Creates a lot of the channels. Args: name_of_the_channels, count")
-    table.add_row(f"{pref}spam",         "Spamming in all channels. Args: count, message_text")
+    table.add_row(f"{pref}ban",                "Banning members. Arguments: @member, reason")
+    table.add_row(f"{pref}ban_all",            "Banning all members.")
+    table.add_row(f"{pref}spam_roles",         "Creates a lot of roles. Args: count, name_of_the_roles")
+    table.add_row(f"{pref}delete_all",         "Deletes all channels on the server.")
+    table.add_row(f"{pref}spam_channel",       "Creates a lot of the channels. Args: name_of_the_channels, count")
+    table.add_row(f"{pref}spam",               "Spamming in all channels. Args: count, message_text")
 
     console = Console()
     console.print(table)
